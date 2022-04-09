@@ -21,7 +21,7 @@ class Articles(models.Model):
         return self.category in (self.Q, self.F)
 
 
-class Comment(models.Model):
+class Comments(models.Model):
     id = models.AutoField(primary_key=True)
     article = models.ForeignKey(Articles, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
