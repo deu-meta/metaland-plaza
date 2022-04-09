@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_simplejwt.token_blacklist",
+    "dj_rest_auth",
+    "django_filters",
     # myapp
     "articles",
 ]
@@ -108,8 +110,11 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "ko-KR"
 TIME_ZONE = "Asia/Seoul"
 USE_I18N = True
-USE_TZ = True
+USE_L10N = True
 
+USE_TZ = False
+# 배포시
+# USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
