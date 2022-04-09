@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "articles",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -69,7 +70,7 @@ WSGI_APPLICATION = "metaland.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "nougly",
+        "NAME": "metaland",
         "USER": "root",
         "PASSWORD": os.environ.get("Database_Password"),
         "HOST": "localhost",
