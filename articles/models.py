@@ -7,7 +7,7 @@ class Articles(models.Model):
     Q = "QA"
     F = "F"
 
-    CATEGORY_CHOICES = [(Q, "Q&A게시판"), (F, "자유게시판")]
+    CATEGORY_CHOICES = [("Q&A게시판", Q), ("자유게시판", F)]
 
     id = models.AutoField(primary_key=True)
     category = models.CharField(max_length=15, choices=CATEGORY_CHOICES)
@@ -20,6 +20,13 @@ class Articles(models.Model):
     def is_upperclass(self):
         return self.category in (self.Q, self.F)
 
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        verbose_name = "게시물"
+        verbose_name_plural = f"{verbose_name} 목록"
+
 
 class Comments(models.Model):
     id = models.AutoField(primary_key=True)
@@ -28,3 +35,10 @@ class Comments(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.article
+
+    class Meta:
+        verbose_name = "댓글"
+        verbose_name_plural = f"{verbose_name} 목록"
