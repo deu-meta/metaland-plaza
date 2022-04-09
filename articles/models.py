@@ -23,7 +23,7 @@ class Articles(models.Model):
 
 class Comments(models.Model):
     id = models.AutoField(primary_key=True)
-    article = models.ForeignKey(Articles, on_delete=models.CASCADE)
+    article = models.ForeignKey(Articles, related_name="articles", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
