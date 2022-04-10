@@ -4,12 +4,17 @@ from .models import *
 
 
 class ArticleSerializer(serializers.ModelSerializer):
+
+    author = serializers.ReadOnlyField(source="user.nickname")
+
     class Meta:
         model = Articles
-        exclude = ["modified_at"]
+        fields = ("id", "category", "title", "created_at", "contents", "author")
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source="user.nickname")
+
     class Meta:
-        models = Comments
-        exclude = ["modified_at"]
+        model = Comments
+        fields = ("id", "article", "created_at", "contents", "author")

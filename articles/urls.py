@@ -1,14 +1,14 @@
-from rest_framework.routers import DefaultRouter
+from django.urls import include, path
+from rest_framework_nested import routers  # /articles/:id/comments 구성하는데 쓰임
 
 from .views import *
 
-router = DefaultRouter()
+router = routers.DefaultRouter()
 
-router.register(
-    "",
-    ArticleViewSet,
-)
-router.register("comment", CommentViewSet)
+router.register("", ArticleViewSet, basename="article")
+
+comment_router = routers.NestedDefaultRouter(router, "", lookup="article")
+comment_router.register("comments", CommentViewSet, basename="comment")
 
 
-urlpatterns = router.urls
+urlpatterns = [path("", include(router.urls)), path("", include(comment_router.urls))]

@@ -36,8 +36,8 @@ class Comments(models.Model):
     contents = models.TextField()
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
-        return self.article
+    def __str__(self):
+        return "{}에 댓글 {}번".format(self.article, self.id)
 
     class Meta:
         verbose_name = "댓글"

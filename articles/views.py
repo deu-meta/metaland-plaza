@@ -1,5 +1,5 @@
 # Create your views here.
-from rest_framework import permissions, status, viewsets
+from rest_framework import permissions, viewsets
 
 from .permissions import IsUserOrReadOnly
 from .serializers import *
