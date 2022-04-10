@@ -35,6 +35,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # DRF Authentication 이용
+    "rest_framework",
+    "rest_framework.authtoken",
+    "rest_framework_simplejwt.token_blacklist",
+    "dj_rest_auth",
+    "django_filters",
+    # myapp
+    "articles",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -69,7 +77,7 @@ WSGI_APPLICATION = "metaland.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "nougly",
+        "NAME": "metaland",
         "USER": "root",
         "PASSWORD": os.environ.get("Database_Password"),
         "HOST": "localhost",
@@ -102,8 +110,11 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "ko-KR"
 TIME_ZONE = "Asia/Seoul"
 USE_I18N = True
-USE_TZ = True
+USE_L10N = True
 
+USE_TZ = False
+# 배포시
+# USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -112,3 +123,23 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",  # 인증된 사용자만 접근 가능
+        "rest_framework.permissions.IsAdminUser",  # 관리자만 접근 가능
+        "rest_framework.permissions.AllowAny",  # 누구나 접근 가능
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
+        # 'rest_framework.authentication.TokenAuthentication',
+        "rest_framework.authentication.SessionAuthentication",
+        # 'rest_framework.authentication.BasicAuthentication',
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
