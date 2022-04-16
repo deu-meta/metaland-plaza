@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_filters",
     # myapp
     "articles",
+    "notices",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
