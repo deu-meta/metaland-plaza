@@ -26,6 +26,8 @@ SECRET_KEY = os.environ.get("metaland_SECRET_KEY")
 DEBUG = os.environ.get("metaland_DEBUG")
 ALLOWED_HOSTS = ["*"]
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
     # myapp
     "articles",
     "notices",
+    "spaces",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
