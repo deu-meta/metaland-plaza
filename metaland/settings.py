@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("metaland_SECRET_KEY")
+SECRET_KEY = os.environ.get("MTL_PLAZA_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("metaland_DEBUG")
-ALLOWED_HOSTS = ["*"]
+DEBUG = os.environ.get("MTL_PLAZA_DEBUG", "false").lower() != "false"
+ALLOWED_HOSTS = list(os.environ.get("MTL_PLAZA_ALLOWED_HOSTS", "*").split(","))
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -81,11 +81,11 @@ WSGI_APPLICATION = "metaland.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "metaland",
-        "USER": "root",
-        "PASSWORD": os.environ.get("Database_Password"),
-        "HOST": "localhost",
-        "PORT": "3306",
+        "NAME": os.environ.get("MTL_PLAZA_DATABASE", "metaland"),
+        "USER": os.environ.get("MTL_PLAZA_DB_USER", "root"),
+        "PASSWORD": os.environ.get("MTL_PLAZA_DB_PASSWORD", None),
+        "HOST": os.environ.get("MTL_PLAZA_DB_HOST", "localhost"),
+        "PORT": os.environ.get("MTL_PLAZA_DB_PORT", 3306),
         "OPTIONS": {"charset": "utf8mb4"},
     }
 }
