@@ -8,13 +8,12 @@ from rest_framework import status, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
-from notices.models import Notices
-
+from .models import Notice
 from .serializers import NoticeSerializer
 
 
 class NoticeViewSet(viewsets.ModelViewSet):
-    queryset = Notices.objects.all()
+    queryset = Notice.objects.all()
     serializer_class = NoticeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsStaffOrReadOnly]
 

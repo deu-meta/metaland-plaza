@@ -2,8 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 
-# Create your models here.
-class Notices(models.Model):
+class Notice(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, null=False, blank=False, default="제목없음")

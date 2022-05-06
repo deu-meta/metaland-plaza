@@ -3,10 +3,8 @@ from email.policy import default
 from django.contrib.auth import get_user_model
 from django.db import models
 
-# Create your models here.
 
-
-class Spaces(models.Model):
+class Space(models.Model):
 
     CATEGORY_CHOICES = [("B", "건물"), ("D", "학과"), ("F", "동아리")]
 
