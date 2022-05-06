@@ -81,7 +81,7 @@ WSGI_APPLICATION = "metaland.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("MTL_PLAZA_DATABASE", "metaland"),
+        "NAME": os.environ.get("MTL_PLAZA_DB_NAME", "metaland"),
         "USER": os.environ.get("MTL_PLAZA_DB_USER", "root"),
         "PASSWORD": os.environ.get("MTL_PLAZA_DB_PASSWORD", None),
         "HOST": os.environ.get("MTL_PLAZA_DB_HOST", "localhost"),
