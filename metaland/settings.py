@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "articles",
     "notices",
     "spaces",
+    "navlinks",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
