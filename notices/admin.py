@@ -1,10 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import Notices
+from .models import Notice
 
 
-@admin.register(Notices)
+@admin.register(Notice)
 class NoticeAdmin(admin.ModelAdmin):
     list_display = ["id", "title", "notion"]
     list_per_page = 10

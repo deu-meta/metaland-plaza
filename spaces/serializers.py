@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from .models import Spaces
+from .models import Space
 
 
 class SpaceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Spaces
+        model = Space
         fields = "__all__"
