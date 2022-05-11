@@ -6,7 +6,7 @@ from .serializers import *
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Articles.objects.all()
+    queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsUserOrReadOnly]
 
@@ -17,7 +17,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsUserOrReadOnly]
-    queryset = Comments.objects.all()
+    queryset = Comment.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

@@ -3,7 +3,7 @@ from django.db import models
 
 
 # Create your models here.
-class Articles(models.Model):
+class Article(models.Model):
     Q = "QA"
     F = "F"
 
@@ -28,9 +28,9 @@ class Articles(models.Model):
         verbose_name_plural = f"{verbose_name} 목록"
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     id = models.AutoField(primary_key=True)
-    article = models.ForeignKey(Articles, related_name="articles", on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, related_name="articles", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
