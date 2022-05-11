@@ -1,0 +1,28 @@
+version: "3.5"
+services:
+  metaland-plaza:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8001:8000
+    volumes:
+      - .:/metaland-plaza
+    environment:
+      - MTL_PLAZA_DEBUG=${MTL_PLAZA_DEBUG}
+      - MTL_PLAZA_SECRET_KEY=${MTL_PLAZA_SECRET_KEY}
+      - MTL_PLAZA_DB_HOST=db
+      - MTL_PLAZA_DB_PORT=3306
+      - MTL_PLAZA_DB_NAME=metaland
+      - MTL_PLAZA_DB_USER=${MTL_PLAZA_DB_USER}
+      - MTL_PLAZA_DB_PASSWORD=${MTL_PLAZA_DB_PASSWORD}
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      - MARIADB_RANDOM_ROOT_PASSWORD=true
+      - MARIADB_DATABASE=metaland
+      - MARIADB_USER=${MTL_PLAZA_DB_USER}
+      - MARIADB_PASSWORD=${MTL_PLAZA_DB_PASSWORD}
