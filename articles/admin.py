@@ -4,11 +4,11 @@ from django.contrib import admin
 from .models import *
 
 
-@admin.register(Articles)
+@admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ["id", "category", "title", "created_at"]
 
 
-@admin.register(Comments)
+@admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ["id", "article"]
