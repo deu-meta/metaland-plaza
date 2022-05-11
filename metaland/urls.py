@@ -21,4 +21,5 @@ urlpatterns = [
     path("articles/", include("articles.urls")),
     path("notices/", include("notices.urls")),
     path("spaces/", include("spaces.urls")),
+    path("navlinks/", include("navlinks.urls")),
 ]
