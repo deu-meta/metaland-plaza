@@ -26,6 +26,8 @@ SECRET_KEY = os.environ.get("MTL_PLAZA_SECRET_KEY")
 DEBUG = os.environ.get("MTL_PLAZA_DEBUG", "false").lower() != "false"
 ALLOWED_HOSTS = list(os.environ.get("MTL_PLAZA_ALLOWED_HOSTS", "*").split(","))
 
+CORS_ALLOWED_ORIGINS = list(os.environ.get("MTL_PLAZA_CORS_HOSTS", "http://localhost:3000").split(","))
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # django-cors-headers
+    "corsheaders",
     # DRF Authentication 이용
     "rest_framework",
     "rest_framework.authtoken",
@@ -52,6 +56,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
