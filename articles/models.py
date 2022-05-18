@@ -26,6 +26,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = "게시물"
         verbose_name_plural = f"{verbose_name} 목록"
+        ordering = ["-id"]
 
 
 class Comment(models.Model):
@@ -42,3 +43,4 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "댓글"
         verbose_name_plural = f"{verbose_name} 목록"
+        ordering = ["id"]
