@@ -9,4 +9,4 @@ class NoticeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Notice
-        fields = ["id", "title", "notion", "author"]
+        fields = ["id", "title", "created_at", "notion", "author"]
