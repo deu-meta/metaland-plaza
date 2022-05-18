@@ -7,10 +7,10 @@ class Article(models.Model):
     Q = "QA"
     F = "F"
 
-    CATEGORY_CHOICES = [("Q&A게시판", Q), ("자유게시판", F)]
+    CATEGORY_CHOICES = [(Q, "Q&A게시판"), (F, "자유게시판")]
 
     id = models.AutoField(primary_key=True)
-    category = models.CharField(max_length=15, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
     title = models.CharField(max_length=200, default="제목없음")
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
