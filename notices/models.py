@@ -16,3 +16,4 @@ class Notice(models.Model):
     class Meta:
         verbose_name = "공지사항"
         verbose_name_plural = f"{verbose_name}"
+        ordering = ['-id']
