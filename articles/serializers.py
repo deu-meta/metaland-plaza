@@ -1,11 +1,11 @@
+from metaland.serializers import TokenUserSerializer
 from rest_framework import serializers
 
 from .models import *
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-
-    author = serializers.ReadOnlyField(source="user.nickname")
+    author = TokenUserSerializer()
 
     class Meta:
         model = Article
@@ -13,7 +13,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source="user.nickname")
+    author = TokenUserSerializer()
 
     class Meta:
         model = Comment
