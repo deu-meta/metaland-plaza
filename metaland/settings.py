@@ -43,9 +43,6 @@ INSTALLED_APPS = [
     "corsheaders",
     # DRF Authentication 이용
     "rest_framework",
-    "rest_framework.authtoken",
-    "rest_framework_simplejwt.token_blacklist",
-    "dj_rest_auth",
     "django_filters",
     # myapp
     "articles",
@@ -145,11 +142,19 @@ REST_FRAMEWORK = {
         "django_filters.rest_framework.DjangoFilterBackend",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
-        # 'rest_framework.authentication.TokenAuthentication',
-        "rest_framework.authentication.SessionAuthentication",
-        # 'rest_framework.authentication.BasicAuthentication',
+        "rest_framework_simplejwt.authentication.JWTTokenUserAuthentication",
     ],
     "DEFAULT_PAGINATION_CLASS": "metaland.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+}
+
+# djangorestframework-simplejwt settings
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
+SIMPLE_JWT = {
+    "ALGORITHM": os.environ.get("MTL_PLAZA_JWT_ALGORITHM", "HS256"),
+    "SIGNING_KEY": SECRET_KEY,
+    "USER_ID_FIELD": "sub",
+    "USER_ID_CLAIM": "sub",
+    "TOKEN_TYPE_CLAIM": "type",
+    "TOKEN_USER_CLASS": "metaland.models.TokenUser",
 }
