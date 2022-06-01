@@ -15,7 +15,7 @@ class Space(models.Model):
 
     name = models.CharField(max_length=100, primary_key=True)
     type = models.CharField(max_length=30, choices=CATEGORY_CHOICES, null=False)
-    thumbnail = models.ImageField(default="default_image.jpg", upload_to=get_image_path)
+    thumbnail = models.ImageField(upload_to=get_image_path, null=True)
     short_introduce = models.CharField(max_length=200, default="소개없음")
     long_introduce = models.TextField(default="글 없음")
 
