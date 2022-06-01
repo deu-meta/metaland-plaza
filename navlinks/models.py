@@ -5,7 +5,7 @@ class NavLink(models.Model):
 
     name = models.CharField(max_length=20, null=False, blank=False)
     order = models.IntegerField(null=False)
-    link = models.URLField(null=False)
+    link = models.CharField(max_length=300, null=False)
 
     def __str__(self) -> str:
         return f"{self.name} ({self.link})"
