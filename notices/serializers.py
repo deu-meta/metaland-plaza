@@ -1,11 +1,11 @@
+from metaland.serializers import TokenUserSerializer
 from rest_framework import serializers
 
 from .models import Notice
 
 
 class NoticeSerializer(serializers.ModelSerializer):
-
-    author = serializers.ReadOnlyField(source="user.nickname")
+    author = TokenUserSerializer()
 
     class Meta:
         model = Notice

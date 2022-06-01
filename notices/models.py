@@ -1,5 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
+from metaland.models import TokenUserField
 
 
 class Notice(models.Model):
@@ -7,7 +7,7 @@ class Notice(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, null=False, blank=False, default="제목없음")
     created_at = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    author = TokenUserField()
     notion = models.CharField(max_length=400)
     viewcount = models.PositiveBigIntegerField(default=0)
 

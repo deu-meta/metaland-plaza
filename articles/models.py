@@ -1,5 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
+from metaland.models import TokenUserField
 
 
 # Create your models here.
@@ -15,7 +15,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    author = TokenUserField()
 
     def is_upperclass(self):
         return self.category in (self.Q, self.F)
@@ -35,7 +35,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    author = TokenUserField()
 
     def __str__(self):
         return "{}에 댓글 {}번".format(self.article, self.id)
