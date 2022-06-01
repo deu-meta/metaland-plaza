@@ -27,6 +27,7 @@ DEBUG = os.environ.get("MTL_PLAZA_DEBUG", "false").lower() != "false"
 ALLOWED_HOSTS = list(os.environ.get("MTL_PLAZA_ALLOWED_HOSTS", "*").split(","))
 
 CORS_ALLOWED_ORIGINS = list(os.environ.get("MTL_PLAZA_CORS_HOSTS", "http://localhost:3000").split(","))
+CORS_ALLOW_CREDENTIALS = True
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
