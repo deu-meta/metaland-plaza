@@ -50,9 +50,6 @@ class TokenUserField(models.JSONField):
     clean_keys = ["iat", "nbf", "jti", "exp", "type", "fresh"]
     """JWT Payload에서 사용하지 않을 필드들"""
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(self, *args, **kwargs)
-
     def from_db_value(self, value, expression, connection):
         value = super().from_db_value(value, expression, connection)
         if value is None:
