@@ -69,3 +69,11 @@ class TokenUserField(models.JSONField):
             del payload[key]
 
         return super().get_prep_value(payload)
+
+
+class Authorable(models.Model):
+    author = TokenUserField(null=False)
+    author_id = models.CharField(max_length=36, null=False, editable=False, db_index=True)
+
+    class Meta:
+        abstract = True
