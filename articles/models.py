@@ -1,9 +1,9 @@
 from django.db import models
-from metaland.models import TokenUserField
+from metaland.models import Authorable
 
 
 # Create your models here.
-class Article(models.Model):
+class Article(Authorable):
     Q = "QA"
     F = "F"
 
@@ -15,7 +15,6 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
-    author = TokenUserField()
 
     def is_upperclass(self):
         return self.category in (self.Q, self.F)
@@ -29,13 +28,12 @@ class Article(models.Model):
         ordering = ["-id"]
 
 
-class Comment(models.Model):
+class Comment(Authorable):
     id = models.AutoField(primary_key=True)
     article = models.ForeignKey(Article, related_name="articles", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     contents = models.TextField()
-    author = TokenUserField()
 
     def __str__(self):
         return "{}에 댓글 {}번".format(self.article, self.id)

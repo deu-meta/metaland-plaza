@@ -1,13 +1,12 @@
 from django.db import models
-from metaland.models import TokenUserField
+from metaland.models import Authorable
 
 
-class Notice(models.Model):
+class Notice(Authorable):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, null=False, blank=False, default="제목없음")
     created_at = models.DateTimeField(auto_now_add=True)
-    author = TokenUserField()
     notion = models.CharField(max_length=400)
     viewcount = models.PositiveBigIntegerField(default=0)
 
