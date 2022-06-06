@@ -9,8 +9,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        read_only_fields = ("author_id",)
-        fields = ("id", "category", "title", "created_at", "contents", "author", "author_id")
+        fields = ("id", "category", "title", "created_at", "contents", "author")
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -18,5 +17,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        read_only_fields = ("author_id",)
-        fields = ("id", "article", "created_at", "contents", "author", "author_id")
+        fields = ("id", "article", "created_at", "contents", "author")
