@@ -9,4 +9,5 @@ class NoticeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Notice
-        fields = ["id", "title", "created_at", "notion", "author"]
+        read_only_fields = ("author_id",)
+        fields = ("id", "title", "created_at", "notion", "author")
