@@ -10,6 +10,7 @@ class TokenUserSerializer(serializers.ReadOnlyField):
         name = email.split("@")[0]
 
         return {
+            "id": value.token.payload["sub"],
             "nickname": "****" + name[-3:],
             "role": role,
         }
