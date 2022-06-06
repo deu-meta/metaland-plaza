@@ -18,7 +18,7 @@ class NoticeViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly, IsStaffOrReadOnly]
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(author=self.request.user, author_id=self.request.user.id)
 
     def retrieve(self, request, pk=None):
         # obj = self.get_object()

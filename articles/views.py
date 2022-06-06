@@ -17,7 +17,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     search_fields = ["title"]
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(author=self.request.user, author_id=self.request.user.id)
 
 
 class CommentViewSet(viewsets.ModelViewSet):
@@ -26,4 +26,4 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(author=self.request.user, author_id=self.request.user.id)
